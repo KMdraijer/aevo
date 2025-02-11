@@ -16,6 +16,7 @@ import json
 import hashlib
 import numpy as np
 import pymatgen as mg
+from pymatgen.core import Structure
 from pymatgen.io.vasp.inputs import Poscar
 
 __author__ = "Alexander Urban"
@@ -673,7 +674,7 @@ class Evolution(Serializable):
         print("   writing file: {}".format(filename))
 
         # pymatgen specific
-        s = mg.Structure(lattice=self.avec, species=types, coords=coords)
+        s = Structure(lattice=self.avec, species=types, coords=coords)
         p = Poscar(structure=s)
         p.write_file(filename)
 
